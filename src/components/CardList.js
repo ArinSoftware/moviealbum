@@ -1,14 +1,17 @@
-import React, { Component } from 'react'
+import React, {useContext} from 'react'
 import Card from './Card'
+import { MovieContext } from '../contexts/MovieContext'
 
-class CardList extends Component {
-    render() {
+
+const CardList = () =>{
+
+    const  { movies } = useContext(MovieContext)
 
         return (
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
                 {
-                    this.props.movies.map(function (movie) {
+                    movies.map(function (movie) {
                         return (
                         <div className="col" key={movie.id}>
                             <Card movie={movie}/>
@@ -21,6 +24,5 @@ class CardList extends Component {
             </div>
         )
     }
-}
 
 export default CardList

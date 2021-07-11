@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { MovieContext } from '../contexts/MovieContext'
 
-const Search = (props) => {
+const Search = () => {
+
+  const  { searchMovie } = useContext(MovieContext)
 
   const [term, setTerm] = useState("")
 
   const handleOnSubmit = (event) => {
     event.preventDefault()
-    props.searchMovie(term)
+    searchMovie(term)
   }
 
   const handleOnChange = (event) => {
@@ -23,7 +26,7 @@ const Search = (props) => {
           <input
             type="submit"
             className="form-control btn-block btn btn-danger text-white"
-          />
+          disabled={!(term.length > 2)}/>
         </div>
       </form>
     );

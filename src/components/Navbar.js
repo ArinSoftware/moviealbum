@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import {Link} from 'react-router-dom'
+import { MovieContext } from '../contexts/MovieContext'
 
-class Navbar extends Component {
-  render() {
+const Navbar = () => {
+
+  const { getMovies } = useContext(MovieContext)
+
     return (
       <header>
         <div className="navbar navbar-dark bg-dark shadow-sm">
@@ -31,6 +34,9 @@ class Navbar extends Component {
               <li className="nav-item">
                 <Link className="nav-link text-white" to="/about">About</Link>
               </li>
+              <li>
+                <input onClick={getMovies} type="submit" className="form-control btn btn-danger text-white" value="RESET" />
+              </li>
             </ul>
 
           </div>
@@ -38,6 +44,5 @@ class Navbar extends Component {
       </header>
     );
   }
-}
 
 export default Navbar;
